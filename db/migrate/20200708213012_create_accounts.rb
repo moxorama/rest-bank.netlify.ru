@@ -5,5 +5,7 @@ class CreateAccounts < ActiveRecord::Migration[5.2]
       t.decimal :balance
       t.timestamps
     end
+
+    add_index :accounts, :account_number
   end
 end

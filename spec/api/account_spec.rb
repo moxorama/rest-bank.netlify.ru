@@ -1,0 +1,53 @@
+require "rails_helper"
+require "support/accounts_helper"
+
+TEST_AMOUNT = 100
+
+
+describe "Accounts API:" do
+  
+  before :all do
+    clean_accounts
+  end
+
+  it "create account" do
+
+    post '/accounts/', params: {
+      account_number: 'source',
+      amount: TEST_AMOUNT
+    }
+
+    expect(response).to have_http_status 200
+
+    json = JSON.parse(response.body)
+    
+
+    expect(json['account']['account_number']).to eq 'source'
+    expect(json['account']['balance']).to eq TEST_AMOUNT
+    
+    account = Account.find_by(account_number: 'source')
+    expect(account.balance).to eq TEST_AMOUNT
+  end
+
+  it "show account balance" do
+    get '/accounts/source'
+
+    expect(response).to have_http_status 200
+    
+    json = JSON.parse(response.body)
+
+    expect(json['account']['account_number']).to eq 'source'
+    expect(json['account']['balance']).to eq TEST_AMOUNT
+
+  end
+
+  it "non existing account balance" do
+    get '/accounts/wrong_account'
+
+    expect(response).to have_http_status 200
+
+    json = JSON.parse(response.body)
+    expect(json['account']['status']).to eq 'error'
+
+  end
+end
