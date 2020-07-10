@@ -13,5 +13,5 @@ def destination_account
 end
 
 def clean_accounts
-  Account.where(account_number: ['demo_source', 'demo_destination']).delete_all
+  Account.where(account_number: ['demo_source', 'demo_destination']).each { |a| a.destroy }
 end

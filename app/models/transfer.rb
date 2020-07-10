@@ -4,7 +4,7 @@ class Transfer < ApplicationRecord
 
   validates :source, presence: true
   validates :destination, presence: true
-  validates :amount, presence: true, numericality: true
+  validates :amount, presence: true, numericality:{ :greater_than_or_equal_to => 0 }
 
   has_many :transactions, as: :reason
   include AASM
