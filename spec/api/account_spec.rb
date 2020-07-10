@@ -5,7 +5,6 @@ TEST_AMOUNT = 100
 
 
 describe "Accounts API:" do
-  
   before :all do
     clean_accounts
   end
@@ -13,7 +12,7 @@ describe "Accounts API:" do
   it "create account" do
 
     post '/accounts/', params: {
-      account_number: 'source',
+      account_number: 'demo_source',
       amount: TEST_AMOUNT
     }
 
@@ -21,24 +20,22 @@ describe "Accounts API:" do
 
     json = JSON.parse(response.body)
     
-
-    expect(json['account']['account_number']).to eq 'source'
+    expect(json['account']['account_number']).to eq 'demo_source'
     expect(json['account']['balance']).to eq TEST_AMOUNT
     
-    account = Account.find_by(account_number: 'source')
+    account = Account.find_by(account_number: 'demo_source')
     expect(account.balance).to eq TEST_AMOUNT
   end
 
   it "show account balance" do
-    get '/accounts/source'
+    get '/accounts/demo_source'
 
     expect(response).to have_http_status 200
     
     json = JSON.parse(response.body)
 
-    expect(json['account']['account_number']).to eq 'source'
+    expect(json['account']['account_number']).to eq 'demo_source'
     expect(json['account']['balance']).to eq TEST_AMOUNT
-
   end
 
   it "non existing account balance" do
@@ -48,6 +45,5 @@ describe "Accounts API:" do
 
     json = JSON.parse(response.body)
     expect(json['account']['status']).to eq 'error'
-
   end
 end
