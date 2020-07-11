@@ -10,7 +10,6 @@ class TransfersController < ApplicationController
       amount: @amount
     )
 
-    #p p params, @transfer.valid?, @transfer.errors
     if !@transfer.valid? 
       render action: 'error'
       return

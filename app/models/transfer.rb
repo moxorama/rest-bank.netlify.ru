@@ -29,11 +29,23 @@ class Transfer < ApplicationRecord
     if self.source.balance < self.amount
       fail!
       return
-    end  
+    end 
 
-    Transaction.create(account: self.source, amount: -self.amount, reason: self)
-    Transaction.create(account: self.destination, amount: self.amount, reason: self)
+    # Для решения проблем concurrency при изменении баланса используем optimistic lock
+    # https://api.rubyonrails.org/classes/ActiveRecord/Locking/Optimistic.html
+    # Если по каким-то причинам баланс аккаунта поменялся - откатываем транзакцию 
+    Account.transaction do
+      begin
+        # sleep 30
+        source.update_attributes(balance: source.balance - self.amount)
+        destination.update_attributes(balance: destination.balance + self.amount)
 
-    complete!
+        Transaction.create(account: self.source, amount: -self.amount, reason: self)
+        Transaction.create(account: self.destination, amount: self.amount, reason: self)
+        complete!
+      rescue
+        fail!
+      end
+    end
   end
 end

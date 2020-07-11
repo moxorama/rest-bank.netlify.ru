@@ -1,15 +1,15 @@
 def source_account
-  @account = Account.find_or_create_by(account_number: 'demo_source', balance: 0)
-  @account.transactions.each { |t| t.destroy }
+  @account = Account.find_by(account_number: 'demo_source')
+  @account.destroy unless @account.blank?
 
-  Transaction.create(account: @account, amount: 100)
+  @account = Account.create(account_number: 'demo_source',  balance: 100)
 end
 
 def destination_account
-  @account = Account.find_or_create_by(account_number: 'demo_destination', balance: 0)
-  @account.transactions.each { |t| t.destroy }
+  @account = Account.find_by(account_number: 'demo_destination')
+  @account.destroy unless @account.blank?
 
-  Transaction.create(account: @account, amount: 100)
+  @account = Account.create(account_number: 'demo_destination', balance: 100)
 end
 
 def clean_accounts

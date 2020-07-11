@@ -8,9 +8,7 @@ class AccountsController < ApplicationController
       return
     end
 
-    @account = Account.create(account_number: @account_number, balance: 0)
-    @transaction = Transaction.create(account: @account, amount: @amount)
-
+    @account = Account.create(account_number: @account_number, balance: 100)
 
     render action: 'show'
   end
