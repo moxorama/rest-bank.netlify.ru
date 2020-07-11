@@ -6,7 +6,7 @@ set :repo_url, "https://github.com/moxorama/rest-bank.netlify.ru.git"
 set :use_sudo, false
 
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets  vendor/bundle public/system}
-set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml config/secrets.yml}
 
 set :compressor, :bzip2
 set :assets_dir, %w(public/system)
