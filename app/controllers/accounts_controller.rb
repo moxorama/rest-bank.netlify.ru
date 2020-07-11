@@ -1,4 +1,9 @@
 class AccountsController < ApplicationController
+  def index
+    @accounts = Account.all 
+
+  end
+
   def create
     @account_number = params[:account_number]
     @amount = params[:amount]
@@ -12,6 +17,7 @@ class AccountsController < ApplicationController
 
     render action: 'show'
   end
+
 
   def show
     @account_number = params[:id]

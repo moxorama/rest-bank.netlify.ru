@@ -27,7 +27,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'aasm'
 gem 'rswag'
 gem 'jbuilder'
-gem 'rspec-core' 
+gem 'rspec-core'
+
+# For benchmarks
+gem 'benchmark-ips'
+gem 'rest-client'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'

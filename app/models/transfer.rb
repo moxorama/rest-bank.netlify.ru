@@ -26,7 +26,7 @@ class Transfer < ApplicationRecord
   def process_money
     return unless valid?
 
-    if self.source.balance < self.amount
+    if self.source.balance <= self.amount
       fail!
       return
     end 
