@@ -1,4 +1,2 @@
-json.account do
-  json.status 'error'
-  json.description 'Error description'
-end
+json.status 'error'
+json.description 'Error description'

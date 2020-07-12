@@ -225,10 +225,14 @@ DEPENDENCIES
   rspec-core
   rspec-rails
   rswag
+  rswag-specs
   spring
   spring-watcher-listen (~> 2.0.0)
   typhoeus
   tzinfo-data
+
+RUBY VERSION
+   ruby 2.5.7p206
 
 BUNDLED WITH
    1.17.3

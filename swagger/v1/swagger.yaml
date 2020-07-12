@@ -1,0 +1,54 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/accounts/{account_number}":
+    get:
+      summary: Show an account
+      tags:
+      - Accounts
+      parameters:
+      - name: account_number
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Account info
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account_number:
+                    type: string
+                  balance:
+                    type: integer
+                  status:
+                    type: string
+                required:
+                - account_number
+                - balance
+                - status
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  account_number:
+                    type: string
+                  balance:
+                    type: integer
+                  status:
+                    type: string
+                required:
+                - account_number
+                - balance
+                - status
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: rest-bank.netlify.ru

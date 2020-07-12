@@ -63,7 +63,5 @@ namespace :benchmark do
     }
     p "---------------------------------------------------------------------"
     p "threads=#{CONCURRENCY}, #{NUM_REQUESTS} requests in #{"%.1f" % result.real} seconds, #{"%.2f" % (NUM_REQUESTS/result.real)} rps"
-  
-
   end
 end
