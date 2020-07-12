@@ -1,28 +1,70 @@
-require 'rest-client'
+HOST = 'http://netlify.ru'
+CONCURRENCY  = 5
 
-HOST = 'http://rest-bank.netlify.ru'
+def get_random_transfer_params(accounts)
+  total_accounts = accounts.length
+
+  source_account = accounts[rand(0..total_accounts-1)]
+  destination_account = accounts[rand(0..total_accounts-1)]
+  amount = rand(10000..25000)  
+
+  return {
+    source_account: source_account['account_number'],
+    destination_account: destination_account['account_number'],
+    amount: amount
+  }
+end
 
 namespace :benchmark do 
-  task :transfers do
-    response = RestClient.get(HOST + '/accounts', headers={})
+  task :single do
+    response = Typhoeus.get(HOST + '/accounts/')
 
     json = JSON.parse(response.body)
-    total_accounts = json['accounts'].length
+
+    accounts = json['accounts']
+
+    hydra = Typhoeus::Hydra.new(max_concurrency: CONCURRENCY)
 
     Benchmark.ips do |bench|
-      bench.config(:time => 5, :warmup => 1)
-
-      bench.report("transfers") do
-        source_account = json['accounts'][rand(0..total_accounts-1)]
-        destination_account = json['accounts'][rand(0..total_accounts-1)]
-        amount = rand(10000..25000)  
-
-        response = RestClient.post(HOST + '/transfers/', {
-          source_account: source_account['account_mumber'],
-          destination_account: destination_account['account_number'],
-          amount: amount
-        })
+      bench.config(:time => 10, :warmup => 3)
+   
+  
+      bench.report("transfers") do 
+        response =  Typhoeus::Request.post(HOST + '/transfers/',
+          body: get_random_transfer_params(accounts)
+        )
       end
     end
+  end
+
+
+  task :concurrent do
+    response = Typhoeus.get(HOST + '/accounts/')
+
+    json = JSON.parse(response.body)
+
+    accounts = json['accounts']
+
+    NUM_REQUESTS = 1000
+
+    hydra = Typhoeus::Hydra.new(max_concurrency: CONCURRENCY)
+
+    result = Benchmark.measure ("1000 concurrent requests") {
+      requests = NUM_REQUESTS.times.map do 
+        request =  Typhoeus::Request.new(HOST + '/transfers/',   
+          method: :post,
+          body: get_random_transfer_params(accounts)
+        )
+        hydra.queue(request)
+        request 
+      end
+
+      hydra.run
+    }
+    p result
+    p "---------------------------------------------------------------------"
+    p "threads=#{CONCURRENCY}, #{NUM_REQUESTS} requests in #{"%.1f" % result.real} seconds, #{"%.2f" % (NUM_REQUESTS/result.real)} rps"
+  
+
   end
 end
