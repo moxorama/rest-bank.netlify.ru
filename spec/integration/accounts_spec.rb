@@ -17,8 +17,20 @@ describe 'Accounts API' do
             balance: { type: :integer },
             status: { type: :string }
           },
-          required: [ 'account_number', 'balance', 'status' ]
+          required: [ 'status' ]
+          let(:account_number) { Account.create(account_number: 'demo_soruce', balance: 100).account_number }     
+          run_test!
+      end
 
+      response '200', 'Account info' do
+        schema type: :object,
+          properties: {
+            description: { type: :string },
+            status: { type: :string }
+          },
+          required: [ 'status' ]
+          let(:account_number) { 'wrong_account' }     
+          run_test!
       end
 
     end

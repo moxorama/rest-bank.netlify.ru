@@ -29,9 +29,9 @@ paths:
                     type: integer
                   status:
                     type: string
+                  description:
+                    type: string
                 required:
-                - account_number
-                - balance
                 - status
             application/xml:
               schema:
@@ -43,9 +43,9 @@ paths:
                     type: integer
                   status:
                     type: string
+                  description:
+                    type: string
                 required:
-                - account_number
-                - balance
                 - status
 servers:
 - url: http://{defaultHost}
