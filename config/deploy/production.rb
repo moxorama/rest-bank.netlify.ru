@@ -9,7 +9,7 @@
 # -*- encoding : utf-8 -*-
 set :user, 'webdev'
 
-server '176.112.217.250', user: 'webdev', roles: %w{web app}
+server '194.87.110.156', user: 'webdev', roles: %w{web app}
 set :use_sudo, false
 
 set :deploy_to,   "/var/www/rest-bank.netlify.ru"

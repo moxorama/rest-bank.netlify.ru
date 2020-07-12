@@ -1,5 +1,5 @@
-HOST = 'http://netlify.ru'
-CONCURRENCY  = 5
+HOST = 'http://194.87.110.156'
+CONCURRENCY  = 10
 
 def get_random_transfer_params(accounts)
   total_accounts = accounts.length
@@ -45,11 +45,11 @@ namespace :benchmark do
 
     accounts = json['accounts']
 
-    NUM_REQUESTS = 1000
+    NUM_REQUESTS = 5000
 
     hydra = Typhoeus::Hydra.new(max_concurrency: CONCURRENCY)
 
-    result = Benchmark.measure ("1000 concurrent requests") {
+    result = Benchmark.measure ("#{NUM_REQUESTS} concurrent requests") {
       requests = NUM_REQUESTS.times.map do 
         request =  Typhoeus::Request.new(HOST + '/transfers/',   
           method: :post,
@@ -61,7 +61,6 @@ namespace :benchmark do
 
       hydra.run
     }
-    p result
     p "---------------------------------------------------------------------"
     p "threads=#{CONCURRENCY}, #{NUM_REQUESTS} requests in #{"%.1f" % result.real} seconds, #{"%.2f" % (NUM_REQUESTS/result.real)} rps"
   
