@@ -33,7 +33,7 @@ describe "Accounts API:" do
     expect(response).to have_http_status 200
     
     json = JSON.parse(response.body)
-    
+
     expect(json['status']).to eq 'ok'
     expect(json['account']['account_number']).to eq 'demo_source'
     expect(json['account']['balance']).to eq TEST_AMOUNT
@@ -45,6 +45,6 @@ describe "Accounts API:" do
     expect(response).to have_http_status 200
 
     json = JSON.parse(response.body)
-    expect(json['account']['status']).to eq 'error'
+    expect(json['status']).to eq 'error'
   end
 end

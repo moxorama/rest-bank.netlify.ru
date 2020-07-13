@@ -12,6 +12,31 @@ paths:
       responses:
         '200':
           description: Список аккаунтов
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  accounts:
+                    type: array
+                    required: false
+                    items:
+                      type: object
+                      properties:
+                        balance:
+                          type: integer
+                        account_number:
+                          type: string
+    post:
+      summary: Создание аккаунта
+      tags:
+      - Accounts API
+      parameters: []
+      responses:
+        '200':
+          description: Создание нового аккаунта
           content: {}
   "/accounts/{account_number}":
     get:
@@ -33,32 +58,46 @@ paths:
               schema:
                 type: object
                 properties:
+                  status:
+                    type: string
                   account:
                     type: object
-                    parameters:
+                    properties:
                       balance:
                         type: integer
                       account_number:
                         type: string
-                  status:
-                    type: string
                 required:
                 - status
-            application/xml:
+  "/transfers":
+    post:
+      summary: Перевод средств между аккаунтами
+      tags:
+      - Transfer API
+      parameters: []
+      responses:
+        '200':
+          description: Перевод cредств между аккаунтами
+          content:
+            application/json:
               schema:
                 type: object
                 properties:
-                  account:
-                    type: object
-                    parameters:
-                      balance:
-                        type: integer
-                      account_number:
-                        type: string
                   status:
                     type: string
-                required:
-                - status
+                  transfer:
+                    type: object
+                    properties:
+                      source_account_number:
+                        type: string
+                      source_balance:
+                        type: integer
+                      destination_account_number:
+                        type: string
+                      destination_balance:
+                        type: integer
+                      amount:
+                        type: integer
 servers:
 - url: http://{defaultHost}
   variables:

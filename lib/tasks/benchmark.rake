@@ -9,8 +9,8 @@ def get_random_transfer_params(accounts)
   amount = rand(10000..25000)  
 
   return {
-    source_account: source_account['account_number'],
-    destination_account: destination_account['account_number'],
+    source_account_number: source_account['account_number'],
+    destination_account_number: destination_account['account_number'],
     amount: amount
   }
 end
