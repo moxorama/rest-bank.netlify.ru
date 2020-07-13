@@ -42,7 +42,9 @@ accounts - cодержит список всех аккаутов
       tags 'Accounts API'
       produces 'application/json'
       description "
-### Создает новый аккаунт
+### Создает новый аккаунт с заданным номером и начальным балансом
+
+account_number должен быть уникальным, balance - положительным
   
 Возможные значения status
   - ok - все ok
