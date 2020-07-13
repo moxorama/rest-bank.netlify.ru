@@ -4,32 +4,43 @@ info:
   title: API V1
   version: v1
 paths:
+  "/accounts/":
+    get:
+      summary: Список всех аккаунтов
+      tags:
+      - Accounts API
+      responses:
+        '200':
+          description: Список аккаунтов
+          content: {}
   "/accounts/{account_number}":
     get:
-      summary: Show an account
+      summary: Запрос информации по аккаунту
       tags:
-      - Accounts
+      - Accounts API
       parameters:
       - name: account_number
         in: path
+        description: Номер счета
         required: true
         schema:
           type: string
       responses:
         '200':
-          description: Account info
+          description: Информация об аккаунте
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  account_number:
-                    type: string
-                  balance:
-                    type: integer
+                  account:
+                    type: object
+                    parameters:
+                      balance:
+                        type: integer
+                      account_number:
+                        type: string
                   status:
-                    type: string
-                  description:
                     type: string
                 required:
                 - status
@@ -37,13 +48,14 @@ paths:
               schema:
                 type: object
                 properties:
-                  account_number:
-                    type: string
-                  balance:
-                    type: integer
+                  account:
+                    type: object
+                    parameters:
+                      balance:
+                        type: integer
+                      account_number:
+                        type: string
                   status:
-                    type: string
-                  description:
                     type: string
                 required:
                 - status

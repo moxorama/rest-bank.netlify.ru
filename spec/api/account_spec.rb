@@ -19,9 +19,9 @@ describe "Accounts API:" do
     expect(response).to have_http_status 200
 
     json = JSON.parse(response.body)
-    
-    expect(json['account_number']).to eq 'demo_source'
-    expect(json['balance']).to eq TEST_AMOUNT
+    expect(json['status']).to eq 'ok'
+    expect(json['account']['account_number']).to eq 'demo_source'
+    expect(json['account']['balance']).to eq TEST_AMOUNT
     
     account = Account.find_by(account_number: 'demo_source')
     expect(account.balance).to eq TEST_AMOUNT
@@ -33,9 +33,10 @@ describe "Accounts API:" do
     expect(response).to have_http_status 200
     
     json = JSON.parse(response.body)
-
-    expect(json['account_number']).to eq 'demo_source'
-    expect(json['balance']).to eq TEST_AMOUNT
+    
+    expect(json['status']).to eq 'ok'
+    expect(json['account']['account_number']).to eq 'demo_source'
+    expect(json['account']['balance']).to eq TEST_AMOUNT
   end
 
   it "non existing account balance" do
@@ -44,6 +45,6 @@ describe "Accounts API:" do
     expect(response).to have_http_status 200
 
     json = JSON.parse(response.body)
-    expect(json['status']).to eq 'error'
+    expect(json['account']['status']).to eq 'error'
   end
 end
