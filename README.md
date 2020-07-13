@@ -6,7 +6,7 @@
 
 [Тестирование проекта](https://github.com/moxorama/rest-bank.netlify.ru/wiki/Тестирование-приложения)
 
-[Архитектура](https://github.com/moxorama/rest-bank.netlify.ru/wiki/Архитектура
+[Архитектура](https://github.com/moxorama/rest-bank.netlify.ru/wiki/Архитектура)
 
 [Описание API](http://rest-bank.netlify.ru/api-docs)
 
