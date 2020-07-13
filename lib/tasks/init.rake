@@ -5,5 +5,7 @@ namespace :init do
       account_number = SecureRandom.uuid
       Account.create(account_number: account_number, balance: balance)
     end
+    Account.create(account_number: 'demo_source', balance: 100)
+    Account.create(account_number: 'demo_destination', balance: 100)
   end
 end

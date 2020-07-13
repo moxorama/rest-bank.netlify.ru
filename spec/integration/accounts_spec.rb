@@ -7,8 +7,17 @@ describe 'Accounts API' do
   path '/accounts/' do
     get 'Список всех аккаунтов' do
       tags 'Accounts API'
+description "
+### Возвращает список всех созданных аккаунтов
+        
+Возможные значения status
+  - ok - все ok
+    
+      
+accounts - cодержит список всех аккаутов
+"
       produces 'application/json'
-      response '200', 'Список аккаунтов' do
+      response '200', '' do
         schema type: :object,
           properties: {
             status: { type: :string },
@@ -27,37 +36,25 @@ describe 'Accounts API' do
 
         it {}
       end
-
-      post 'Создание аккаунта' do
-        tags 'Accounts API'
-        parameter name: :account_number, in: :body, type: :string, description: 'Номер счета'
-        response '200', 'Создание нового аккаунта' do
-          schema type: :object,
-            properties: {
-              status: { type: :string },
-              account: { 
-                type: :object,
-                properties: {
-                  balance: { type: :integer },
-                  account_number: { type: :string }
-                }
-              },
-            }
-          it {}
-        end
-      end
     end
 
-  end
-
-  path '/accounts/{account_number}' do
-
-    get 'Запрос информации по аккаунту' do
+    post 'Создание аккаунта' do
       tags 'Accounts API'
       produces 'application/json'
-      parameter name: :account_number, in: :path, type: :string, description: 'Номер счета'
+      description "
+### Создает новый аккаунт
+  
+Возможные значения status
+  - ok - все ok
+  - account_number - аккаунт с таким номером уже есть
+  - balance - недопустимое значение баланса
 
-      response '200', 'Информация об аккаунте' do
+account - информация по созданному аккаунту
+"
+      parameter name: :account_number, in: :query, type: :string, description: 'Номер счета'
+      parameter name: :balance, in: :query, type: :number, description: 'Начальный баланс'
+
+      response '200', '' do
         schema type: :object,
           properties: {
             status: { type: :string },
@@ -68,12 +65,42 @@ describe 'Accounts API' do
                 account_number: { type: :string }
               }
             },
+          }
+        it {}
+      end
+    end
+
+  end
+
+  path '/accounts/{account_number}' do
+
+    get 'Запрос информации по аккаунту' do
+      tags 'Accounts API'
+      produces 'application/json'
+      description "
+### Возвращает информацию об аккаунте
+  
+Возможные значения status
+  - ok - все ok
+  - account_number - аккаунт не найден
+"
+      parameter name: :account_number, in: :path, type: :string, description: 'Номер счета'
+      response '200', '' do
+        schema type: :object,
+          properties: {
+            status: { type: :string },
+            account: { 
+              type: :object,
+              properties: {
+                balance: { type: :integer, description: 'Актуальный баланс аккаунта' },
+                account_number: { type: :string, description: 'Номер аккаунта' }
+              }
+            },
           },
           required: [ 'status' ]
         it {}
       end
     end
-
-  
+ 
   end
 end

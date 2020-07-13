@@ -9,9 +9,12 @@ paths:
       summary: Список всех аккаунтов
       tags:
       - Accounts API
+      description: "\n### Возвращает список всех созданных аккаунтов\n        \nВозможные
+        значения status\n  - ok - все ok\n    \n      \naccounts - cодержит список
+        всех аккаутов\n"
       responses:
         '200':
-          description: Список аккаунтов
+          description: ''
           content:
             application/json:
               schema:
@@ -33,26 +36,23 @@ paths:
       summary: Создание аккаунта
       tags:
       - Accounts API
-      parameters: []
-      responses:
-        '200':
-          description: Создание нового аккаунта
-          content: {}
-  "/accounts/{account_number}":
-    get:
-      summary: Запрос информации по аккаунту
-      tags:
-      - Accounts API
+      description: "\n### Создает новый аккаунт\n  \nВозможные значения status\n  -
+        ok - все ok\n  - account_number - аккаунт с таким номером уже есть\n  - balance
+        - недопустимое значение баланса\n\naccount - информация по созданному аккаунту\n"
       parameters:
       - name: account_number
-        in: path
+        in: query
         description: Номер счета
-        required: true
         schema:
           type: string
+      - name: balance
+        in: query
+        description: Начальный баланс
+        schema:
+          type: number
       responses:
         '200':
-          description: Информация об аккаунте
+          description: ''
           content:
             application/json:
               schema:
@@ -67,6 +67,39 @@ paths:
                         type: integer
                       account_number:
                         type: string
+  "/accounts/{account_number}":
+    get:
+      summary: Запрос информации по аккаунту
+      tags:
+      - Accounts API
+      description: "\n### Возвращает информацию об аккаунте\n  \nВозможные значения
+        status\n  - ok - все ok\n  - account_number - аккаунт не найден\n"
+      parameters:
+      - name: account_number
+        in: path
+        description: Номер счета
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  account:
+                    type: object
+                    properties:
+                      balance:
+                        type: integer
+                        description: Актуальный баланс аккаунта
+                      account_number:
+                        type: string
+                        description: Номер аккаунта
                 required:
                 - status
   "/transfers":
@@ -74,7 +107,29 @@ paths:
       summary: Перевод средств между аккаунтами
       tags:
       - Transfer API
-      parameters: []
+      description: "\n### Перевод средств между аккаунтами\n        \nВозможные значения
+        status\n  - ok - все ok\n  - source - не найден аккаунт отправителя\n  - destination
+        - не найден аккаунт получателя\n  - amount - недопустимое значение суммы перевода\n
+        \ - no_balance - не хватает средств на аккаунте отправителя\n  - concurrency
+        - перевод не прошел - попытка нескольких одновременных переводов с этого аккаунта,
+        следует повторить перевод позже\n\nВызов возвращает актуальные значения баланса
+        на каждом из аккаунтов, вне зависимости от успешности перевода.\n"
+      parameters:
+      - name: source_account_number
+        in: query
+        description: Номер счета отправителя
+        schema:
+          type: string
+      - name: destination_account_number
+        in: query
+        description: Номер счета получателя
+        schema:
+          type: string
+      - name: amount
+        in: query
+        description: Сумма перевода
+        schema:
+          type: integer
       responses:
         '200':
           description: Перевод cредств между аккаунтами
