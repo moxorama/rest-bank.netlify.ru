@@ -13,7 +13,7 @@ describe "Accounts API:" do
 
     post '/accounts/', params: {
       account_number: 'demo_source',
-      amount: TEST_AMOUNT
+      balance: TEST_AMOUNT
     }
 
     expect(response).to have_http_status 200
@@ -22,6 +22,22 @@ describe "Accounts API:" do
     expect(json['status']).to eq 'ok'
     expect(json['account']['account_number']).to eq 'demo_source'
     expect(json['account']['balance']).to eq TEST_AMOUNT
+    
+    account = Account.find_by(account_number: 'demo_source')
+    expect(account.balance).to eq TEST_AMOUNT
+  end
+
+  it "create account with negative amount" do
+
+    post '/accounts/', params: {
+      account_number: 'demo_destination',
+      balance: -TEST_AMOUNT
+    }
+
+    expect(response).to have_http_status 200
+
+    json = JSON.parse(response.body)
+    expect(json['status']).to eq 'balance'
     
     account = Account.find_by(account_number: 'demo_source')
     expect(account.balance).to eq TEST_AMOUNT
@@ -45,6 +61,6 @@ describe "Accounts API:" do
     expect(response).to have_http_status 200
 
     json = JSON.parse(response.body)
-    expect(json['status']).to eq 'error'
+    expect(json['status']).to eq 'account_number'
   end
 end

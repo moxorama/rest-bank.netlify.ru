@@ -39,7 +39,7 @@ describe "Transfer API:" do
 
     json = JSON.parse(response.body)
     
-    expect(json['status']).to eq 'error'
+    expect(json['status']).to eq 'no_balance'
     expect(json['transfer']['source_account_number']).to eq 'demo_source'
     expect(json['transfer']['source_balance']).to eq (INITIAL_AMOUNT - TRANSFER_AMOUNT)
     expect(json['transfer']['destination_account_number']).to eq 'demo_destination'
@@ -57,7 +57,7 @@ describe "Transfer API:" do
 
     json = JSON.parse(response.body)
     
-    expect(json['status']).to eq 'error'
+    expect(json['status']).to eq 'source'
     expect(json['transfer']['destination_account_number']).to eq 'demo_destination'
     expect(json['transfer']['destination_balance']).to eq (INITIAL_AMOUNT + TRANSFER_AMOUNT)
   end
@@ -73,7 +73,7 @@ describe "Transfer API:" do
 
     json = JSON.parse(response.body)
     
-    expect(json['status']).to eq 'error'
+    expect(json['status']).to eq 'destination'
     expect(json['transfer']['source_account_number']).to eq 'demo_source'
     expect(json['transfer']['source_balance']).to eq (INITIAL_AMOUNT - TRANSFER_AMOUNT)
   end
@@ -89,7 +89,7 @@ describe "Transfer API:" do
 
     json = JSON.parse(response.body)
 
-    expect(json['status']).to eq 'error'
+    expect(json['status']).to eq 'amount'
     expect(json['transfer']['source_account_number']).to eq 'demo_source'
     expect(json['transfer']['source_balance']).to eq (INITIAL_AMOUNT - TRANSFER_AMOUNT)
     expect(json['transfer']['destination_account_number']).to eq 'demo_destination'

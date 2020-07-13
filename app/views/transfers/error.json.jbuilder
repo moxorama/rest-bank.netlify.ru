@@ -1,5 +1,4 @@
-json.status 'error'
-json.description 'Some description'
+json.status @error
 json.transfer do
   json.source_account_number @source&.account_number
   json.source_balance @source&.balance

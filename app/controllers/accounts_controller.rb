@@ -6,14 +6,16 @@ class AccountsController < ApplicationController
 
   def create
     @account_number = params[:account_number]
-    @amount = params[:amount]
+    @balance = params[:balance]
 
-    if Account.exists?(account_number: @account_number) 
+
+    @account = Account.create(account_number: @account_number, balance: @balance)
+
+    if !@account.valid?
+      @error = @account.errors.first[0]
       render action: 'error'
       return
-    end
-
-    @account = Account.create(account_number: @account_number, balance: 100)
+    end    
 
     render action: 'show'
   end
@@ -24,6 +26,7 @@ class AccountsController < ApplicationController
     @account = Account.find_by(account_number: @account_number)
 
     if @account.blank?
+      @error = 'account_number'
       render action: 'error'
       return
     end

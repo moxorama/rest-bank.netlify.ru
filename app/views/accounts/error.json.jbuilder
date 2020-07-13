@@ -1,2 +1,1 @@
-json.status 'error'
-json.description 'Error description'
+json.status @error

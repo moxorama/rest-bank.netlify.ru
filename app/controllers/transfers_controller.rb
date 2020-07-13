@@ -11,13 +11,15 @@ class TransfersController < ApplicationController
     )
 
     if !@transfer.valid? 
+      @error = @transfer.errors.first[0]
       render action: 'error'
       return
     end
 
-    @transfer.process_money
+    result = @transfer.process_money
 
-    if @transfer.failed?
+    if !@transfer.done?
+      @error = @transfer.state
       render action: 'error'
       return
     end

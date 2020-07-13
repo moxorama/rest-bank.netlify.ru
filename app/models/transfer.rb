@@ -4,7 +4,7 @@ class Transfer < ApplicationRecord
 
   validates :source, presence: true
   validates :destination, presence: true
-  validates :amount, presence: true, numericality: { :greater_than_or_equal_to => 0 }
+  validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
   has_many :transactions, as: :reason
   include AASM
@@ -12,14 +12,19 @@ class Transfer < ApplicationRecord
   aasm column: 'state' do
     state :request, initial: true
     state :done
-    state :failed
+    state :concurrency
+    state :no_balance
 
     event :complete do
       transitions to: :done
     end
 
-    event :fail do
-      transitions to: :failed
+    event :concurrency do
+      transitions to: :concurrency
+    end
+
+    event :no_balance do
+      transitions to: :no_balance
     end
   end
   
@@ -27,7 +32,7 @@ class Transfer < ApplicationRecord
     return unless valid?
 
     if self.source.balance <= self.amount
-      fail!
+      no_balance!
       return
     end 
 
@@ -44,7 +49,7 @@ class Transfer < ApplicationRecord
         Transaction.create(account: self.destination, amount: self.amount, reason: self)
         complete!
       rescue
-        fail!
+        concurrency!
       end
     end
   end
