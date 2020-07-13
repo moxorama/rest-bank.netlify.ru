@@ -55,7 +55,7 @@ describe "Accounts API:" do
     expect(json['account']['balance']).to eq TEST_AMOUNT
   end
 
-  it "non existing account balance" do
+  it "non existing account" do
     get '/accounts/wrong_account'
 
     expect(response).to have_http_status 200
