@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_165252) do
+ActiveRecord::Schema.define(version: 2020_07_14_175352) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "account_number"
@@ -42,6 +42,10 @@ ActiveRecord::Schema.define(version: 2020_07_11_165252) do
     t.decimal "amount", precision: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "initial_source_balance"
+    t.integer "initial_destination_balance"
+    t.integer "final_source_balance"
+    t.integer "final_destination_balance"
     t.index ["destination_id"], name: "index_transfers_on_destination_id"
     t.index ["source_id"], name: "index_transfers_on_source_id"
     t.index ["state"], name: "index_transfers_on_state"

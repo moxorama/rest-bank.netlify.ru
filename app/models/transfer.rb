@@ -6,6 +6,8 @@ class Transfer < ApplicationRecord
   validates :destination, presence: true
   validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
+  before_create :save_initial_balances
+
   has_many :transactions, as: :reason
   include AASM
 
@@ -27,6 +29,7 @@ class Transfer < ApplicationRecord
       transitions to: :no_balance
     end
   end
+
   
   def process_money
     return unless valid?
@@ -41,16 +44,27 @@ class Transfer < ApplicationRecord
     # Если по каким-то причинам баланс аккаунта поменялся - откатываем транзакцию 
     Account.transaction do
       begin
-        # sleep 30
+        sleep 30
         source.update_attributes(balance: source.balance - self.amount)
         destination.update_attributes(balance: destination.balance + self.amount)
 
         Transaction.create(account: self.source, amount: -self.amount, reason: self)
         Transaction.create(account: self.destination, amount: self.amount, reason: self)
+
+        self.update_attributes(
+          final_source_balance: source.balance,
+          final_destination_balance: destination.balance
+        )
         complete!
       rescue
         concurrency!
       end
     end
+  end
+
+
+  def save_initial_balances
+    self.initial_source_balance = self.source.balance
+    self.initial_destination_balance = self.destination.balance
   end
 end

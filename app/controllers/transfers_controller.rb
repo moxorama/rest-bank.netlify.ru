@@ -4,6 +4,11 @@ class TransfersController < ApplicationController
     @destination = Account.find_by(account_number: params[:destination_account_number])
     @amount = params[:amount] || 0
 
+    sleep 10
+    
+    p @source.balance
+    p @destination.balance
+
     @transfer = Transfer.create(
       source: @source,
       destination: @destination,
