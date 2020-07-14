@@ -44,7 +44,6 @@ class Transfer < ApplicationRecord
     # Если по каким-то причинам баланс аккаунта поменялся - откатываем транзакцию 
     Account.transaction do
       begin
-        sleep 30
         source.update_attributes(balance: source.balance - self.amount)
         destination.update_attributes(balance: destination.balance + self.amount)
 
