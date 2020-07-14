@@ -6,7 +6,7 @@ class Transfer < ApplicationRecord
   validates :destination, presence: true
   validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
-  before_create :save_initial_balances
+  before_validation :save_initial_balances
 
   has_many :transactions, as: :reason
   include AASM
@@ -63,7 +63,9 @@ class Transfer < ApplicationRecord
 
 
   def save_initial_balances
-    self.initial_source_balance = self.source.balance
-    self.initial_destination_balance = self.destination.balance
+    if self.new_record?
+      self.initial_source_balance = self.source&.balance
+      self.initial_destination_balance = self.destination&.balance
+    end
   end
 end
