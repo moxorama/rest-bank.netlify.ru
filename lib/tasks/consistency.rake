@@ -20,7 +20,7 @@ namespace :consistency do
 
     NUM_REQUESTS = 100
 
-    hydra = Typhoeus::Hydra.new(max_concurrency: 5)
+    hydra = Typhoeus::Hydra.new(max_concurrency: 10)
 
     requests = NUM_REQUESTS.times.map do 
       request =  Typhoeus::Request.new(HOST + '/transfers/',   
