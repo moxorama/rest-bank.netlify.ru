@@ -1,31 +1,48 @@
-
-def get_random_transfer_params(accounts)  
-
-  amount = rand(10..20)
-
-  return {
-    source_account_number: '1',
-    destination_account_number: '2',
-    amount: amount
-  }
-end
+# Тест на корректность многопоточных транзакций
+# Корректно работает если других операций, над указанными в тесте аккаунтами не производится
+# bundle exec rake 'consistency:test[<исходный_номер_счета>,<целевой_номер_счета>]'
 
 namespace :consistency do 
-  task :test do
-    response = Typhoeus.get(HOST + '/accounts/')
+  task :test, [:source, :destination] do |t, args|
+    HOST = 'http://194.87.110.156'
+    CONCURRENCY  = 10
+    
+    source_account_number = args[:source]
+    destination_account_number = args[:destination]
 
-    json = JSON.parse(response.body)
+    response = Typhoeus.get("#{HOST}/accounts/#{source_account_number}")
+    source_info = JSON.parse(response.body)
 
-    accounts = json['accounts']
+    response = Typhoeus.get("#{HOST}/accounts/#{destination_account_number}")
+    destination_info = JSON.parse(response.body)
 
-    NUM_REQUESTS = 100
+    if (source_info.dig('status') != 'ok') 
+      p "Wrong source account #{source_account_number}"
+      return
+    end
 
-    hydra = Typhoeus::Hydra.new(max_concurrency: 10)
+    if (destination_info.dig('status') != 'ok') 
+      p "Wrong destination account #{destination_account_number}"
+      return
+    end
 
-    requests = NUM_REQUESTS.times.map do 
+
+    # Подготовка данных для тестирования целостности
+    # Сохраняем значения балансов аккаунтов до начала теста, а также сумму балансов
+    source_balance = source_info.dig('account', 'balance') 
+    destination_balance = destination_info.dig('account','balance')
+    total_balance = source_balance + destination_balance
+  
+    hydra = Typhoeus::Hydra.new(max_concurrency: 5)
+
+    requests = 200.times.map do 
       request =  Typhoeus::Request.new(HOST + '/transfers/',   
         method: :post,
-        body: get_random_transfer_params(accounts)
+        body: {
+          source_account_number: source_account_number,
+          destination_account_number: destination_account_number,
+          amount: rand(1..10)
+        }
       )
       hydra.queue(request)
       request 
@@ -34,7 +51,34 @@ namespace :consistency do
     hydra.run
 
     requests.each do |r| 
-      p JSON.parse(r.body)
+      result = JSON.parse(r.response.body)
+      print "---------------------------------------------------------------------------------\n"
+      p result
+      print "\n"
+      if (['ok', 'concurrency', 'no_balance'].include?(result['status']))
+        transfer = result.dig('transfer')
+
+        amount = transfer['amount']
+        source_balance_after_transfer = transfer['source_balance'] 
+        destination_balance_after_transfer = transfer['destination_balance']
+        
+        # Проверка - сумма балансов на аккаунтах не должна меняться в любом случае
+        accounts_total_status = ((source_balance_after_transfer + destination_balance_after_transfer) == total_balance)
+        
+        print "Accounts total check: #{accounts_total_status.to_s}\n"
+
+        if (result['status'] == 'ok')
+          # Проверка - балансы аккаунтов должны отличаться от ранее сохраненных ровно на сумму перевода
+          source_balance_status = ((source_balance - amount) == source_balance_after_transfer)
+          destination_balance_status = ((destination_balance + amount) == destination_balance_after_transfer)
+          print "Transfer amount: #{amount}\n"
+          print 'Source balance check: ' +  source_balance_status.to_s + " (before: #{source_balance}, after: #{source_balance_after_transfer})\n"  
+          print 'Destination balance check: ' + destination_balance_status.to_s + " (before: #{destination_balance}, after: #{destination_balance_after_transfer})\n"  
+
+          source_balance = source_balance_after_transfer
+          destination_balance = destination_balance_after_transfer
+        end
+      end
     end
   end
 end

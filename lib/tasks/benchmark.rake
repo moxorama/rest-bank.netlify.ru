@@ -1,5 +1,3 @@
-HOST = 'http://194.87.110.156'
-CONCURRENCY  = 10
 
 def get_random_transfer_params(accounts)
   total_accounts = accounts.length
@@ -17,13 +15,16 @@ end
 
 namespace :benchmark do 
   task :single do
+    HOST = 'http://194.87.110.156'
+    
+
     response = Typhoeus.get(HOST + '/accounts/')
 
     json = JSON.parse(response.body)
 
     accounts = json['accounts']
 
-    hydra = Typhoeus::Hydra.new(max_concurrency: CONCURRENCY)
+    hydra = Typhoeus::Hydra.new()
 
     Benchmark.ips do |bench|
       bench.config(:time => 10, :warmup => 3)
@@ -39,6 +40,10 @@ namespace :benchmark do
 
 
   task :concurrent do
+    HOST = 'http://194.87.110.156'
+    CONCURRENCY  = 10
+    
+
     response = Typhoeus.get(HOST + '/accounts/')
 
     json = JSON.parse(response.body)
@@ -61,7 +66,7 @@ namespace :benchmark do
 
       hydra.run
     }
-    p "---------------------------------------------------------------------"
-    p "threads=#{CONCURRENCY}, #{NUM_REQUESTS} requests in #{"%.1f" % result.real} seconds, #{"%.2f" % (NUM_REQUESTS/result.real)} rps"
+    print "---------------------------------------------------------------------"
+    print "threads=#{CONCURRENCY}, #{NUM_REQUESTS} requests in #{"%.1f" % result.real} seconds, #{"%.2f" % (NUM_REQUESTS/result.real)} rps"
   end
 end
