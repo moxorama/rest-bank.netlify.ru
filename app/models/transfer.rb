@@ -6,8 +6,6 @@ class Transfer < ApplicationRecord
   validates :destination, presence: true
   validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
-  before_validation :save_initial_balances
-
   has_many :transactions, as: :reason
   include AASM
 
@@ -34,43 +32,30 @@ class Transfer < ApplicationRecord
   def process_money
     return unless valid?
 
-    [source, destination]
-      .sort{ |a,b| a.id <=> b.id }
-      .each { |a| a.lock! }
-
-    if self.source.balance <= self.amount
-      no_balance!
-      return
-    end 
-
-    # Для решения проблем concurrency при изменении баланса используем optimistic lock
-    # https://api.rubyonrails.org/classes/ActiveRecord/Locking/Optimistic.html
-    # Если по каким-то причинам баланс аккаунта поменялся - откатываем транзакцию 
-    Account.transaction do
+    transaction do
       begin
+        # Сортируем по ID для избежания deadlock
+      
+        [source, destination]
+          .sort { |a,b| a.id <=> b.id }
+          .each { |a| a.lock! }
+  
+        update_attributes(
+          initial_source_balance: source.balance, 
+          initial_destination_balance: destination.balance
+        )
 
+        if self.source.balance <= self.amount
+          no_balance!
+          return
+        end 
+    
         source.withdraw(self.amount)
         destination.deposit(self.amount)
-
-        #Transaction.create(account: self.source, amount: -self.amount, reason: self)
-        #Transaction.create(account: self.destination, amount: self.amount, reason: self)
-
-        #self.update_attributes(
-        #  final_source_balance: source.balance,
-        #  final_destination_balance: destination.balance
-        #)
         complete!
       rescue
         concurrency!
       end
-    end
-  end
-
-
-  def save_initial_balances
-    if self.new_record?
-      self.initial_source_balance = self.source&.balance
-      self.initial_destination_balance = self.destination&.balance
     end
   end
 end

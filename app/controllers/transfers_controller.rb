@@ -1,7 +1,7 @@
 class TransfersController < ApplicationController
   def create
     source_account_number = params[:source_account_number]
-    destination_account_number =  params[:destination_account_number]
+    destination_account_number = params[:destination_account_number]
 
     # Запрашиваем аккаунты в один запрос к БД для атомарности, выбираем средствами ruby
     accounts = Account.where(account_number: [source_account_number, destination_account_number])
@@ -17,11 +17,13 @@ class TransfersController < ApplicationController
       amount: @amount
     )
 
+
     if !@transfer.valid? 
       @error = @transfer.errors.first[0]
       render action: 'error'
       return
     end
+
 
     result = @transfer.process_money
 
