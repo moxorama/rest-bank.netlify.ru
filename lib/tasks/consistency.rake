@@ -39,7 +39,7 @@ namespace :consistency do
   
     hydra = Typhoeus::Hydra.new(max_concurrency: 5)
 
-    requests = 100.times.map do 
+    requests = 500.times.map do 
       request =  Typhoeus::Request.new(HOST + '/transfers/',   
         method: :post,
         body: {

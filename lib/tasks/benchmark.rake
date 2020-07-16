@@ -66,7 +66,7 @@ namespace :benchmark do
 
       hydra.run
     }
-    print "---------------------------------------------------------------------"
-    print "threads=#{CONCURRENCY}, #{NUM_REQUESTS} requests in #{"%.1f" % result.real} seconds, #{"%.2f" % (NUM_REQUESTS/result.real)} rps"
+    print "---------------------------------------------------------------------\n"
+    print "threads=#{CONCURRENCY}, #{NUM_REQUESTS} requests in #{"%.1f" % result.real} seconds, #{"%.2f" % (NUM_REQUESTS/result.real)} rps\n"
   end
 end
