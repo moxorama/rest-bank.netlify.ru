@@ -1,0 +1,940 @@
+{"status"=>"ok", "account"=>{"account_number"=>"2", "balance"=>29315}}
+{"status"=>"ok", "account"=>{"account_number"=>"1", "balance"=>26623}}
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29315, "destination_account_number"=>"1", "destination_balance"=>26623, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29315, "destination_account_number"=>"1", "destination_balance"=>26623, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>9, "source_account_number"=>"2", "source_balance"=>29306, "destination_account_number"=>"1", "destination_balance"=>26632}}
+
+Accounts total check: true
+Transfer amount: 9
+Source balance check: true (before: 29315, after: 29306)
+Destination balance check: true (before: 26623, after: 26632)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29315, "destination_account_number"=>"1", "destination_balance"=>26623, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29315, "destination_account_number"=>"1", "destination_balance"=>26623, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>2, "source_account_number"=>"2", "source_balance"=>29304, "destination_account_number"=>"1", "destination_balance"=>26634}}
+
+Accounts total check: true
+Transfer amount: 2
+Source balance check: true (before: 29306, after: 29304)
+Destination balance check: true (before: 26632, after: 26634)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29306, "destination_account_number"=>"1", "destination_balance"=>26632, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29306, "destination_account_number"=>"1", "destination_balance"=>26632, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29306, "destination_account_number"=>"1", "destination_balance"=>26632, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>8, "source_account_number"=>"2", "source_balance"=>29296, "destination_account_number"=>"1", "destination_balance"=>26642}}
+
+Accounts total check: true
+Transfer amount: 8
+Source balance check: true (before: 29304, after: 29296)
+Destination balance check: true (before: 26634, after: 26642)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29304, "destination_account_number"=>"1", "destination_balance"=>26634, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29304, "destination_account_number"=>"1", "destination_balance"=>26634, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29304, "destination_account_number"=>"1", "destination_balance"=>26634, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29304, "destination_account_number"=>"1", "destination_balance"=>26634, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>6, "source_account_number"=>"2", "source_balance"=>29290, "destination_account_number"=>"1", "destination_balance"=>26648}}
+
+Accounts total check: true
+Transfer amount: 6
+Source balance check: true (before: 29296, after: 29290)
+Destination balance check: true (before: 26642, after: 26648)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29296, "destination_account_number"=>"1", "destination_balance"=>26642, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29296, "destination_account_number"=>"1", "destination_balance"=>26642, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>7, "source_account_number"=>"2", "source_balance"=>29283, "destination_account_number"=>"1", "destination_balance"=>26655}}
+
+Accounts total check: true
+Transfer amount: 7
+Source balance check: true (before: 29290, after: 29283)
+Destination balance check: true (before: 26648, after: 26655)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29290, "destination_account_number"=>"1", "destination_balance"=>26648, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29290, "destination_account_number"=>"1", "destination_balance"=>26648, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29283, "destination_account_number"=>"1", "destination_balance"=>26655, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>2, "source_account_number"=>"2", "source_balance"=>29281, "destination_account_number"=>"1", "destination_balance"=>26657}}
+
+Accounts total check: true
+Transfer amount: 2
+Source balance check: true (before: 29283, after: 29281)
+Destination balance check: true (before: 26655, after: 26657)
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>9, "source_account_number"=>"2", "source_balance"=>29272, "destination_account_number"=>"1", "destination_balance"=>26666}}
+
+Accounts total check: true
+Transfer amount: 9
+Source balance check: true (before: 29281, after: 29272)
+Destination balance check: true (before: 26657, after: 26666)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29281, "destination_account_number"=>"1", "destination_balance"=>26657, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29281, "destination_account_number"=>"1", "destination_balance"=>26657, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29281, "destination_account_number"=>"1", "destination_balance"=>26657, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29281, "destination_account_number"=>"1", "destination_balance"=>26657, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29272, "destination_account_number"=>"1", "destination_balance"=>26666, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>2, "source_account_number"=>"2", "source_balance"=>29270, "destination_account_number"=>"1", "destination_balance"=>26668}}
+
+Accounts total check: true
+Transfer amount: 2
+Source balance check: true (before: 29272, after: 29270)
+Destination balance check: true (before: 26666, after: 26668)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29272, "destination_account_number"=>"1", "destination_balance"=>26666, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29272, "destination_account_number"=>"1", "destination_balance"=>26666, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29272, "destination_account_number"=>"1", "destination_balance"=>26666, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>4, "source_account_number"=>"2", "source_balance"=>29266, "destination_account_number"=>"1", "destination_balance"=>26672}}
+
+Accounts total check: true
+Transfer amount: 4
+Source balance check: true (before: 29270, after: 29266)
+Destination balance check: true (before: 26668, after: 26672)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29270, "destination_account_number"=>"1", "destination_balance"=>26668, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29270, "destination_account_number"=>"1", "destination_balance"=>26668, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29270, "destination_account_number"=>"1", "destination_balance"=>26668, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29270, "destination_account_number"=>"1", "destination_balance"=>26668, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>10, "source_account_number"=>"2", "source_balance"=>29256, "destination_account_number"=>"1", "destination_balance"=>26682}}
+
+Accounts total check: true
+Transfer amount: 10
+Source balance check: true (before: 29266, after: 29256)
+Destination balance check: true (before: 26672, after: 26682)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29266, "destination_account_number"=>"1", "destination_balance"=>26672, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29266, "destination_account_number"=>"1", "destination_balance"=>26672, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29266, "destination_account_number"=>"1", "destination_balance"=>26672, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29266, "destination_account_number"=>"1", "destination_balance"=>26672, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29256, "destination_account_number"=>"1", "destination_balance"=>26682, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>10, "source_account_number"=>"2", "source_balance"=>29246, "destination_account_number"=>"1", "destination_balance"=>26692}}
+
+Accounts total check: true
+Transfer amount: 10
+Source balance check: true (before: 29256, after: 29246)
+Destination balance check: true (before: 26682, after: 26692)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29256, "destination_account_number"=>"1", "destination_balance"=>26682, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29256, "destination_account_number"=>"1", "destination_balance"=>26682, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29256, "destination_account_number"=>"1", "destination_balance"=>26682, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>7, "source_account_number"=>"2", "source_balance"=>29239, "destination_account_number"=>"1", "destination_balance"=>26699}}
+
+Accounts total check: true
+Transfer amount: 7
+Source balance check: true (before: 29246, after: 29239)
+Destination balance check: true (before: 26692, after: 26699)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29246, "destination_account_number"=>"1", "destination_balance"=>26692, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29246, "destination_account_number"=>"1", "destination_balance"=>26692, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29246, "destination_account_number"=>"1", "destination_balance"=>26692, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29246, "destination_account_number"=>"1", "destination_balance"=>26692, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29239, "destination_account_number"=>"1", "destination_balance"=>26699, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29239, "destination_account_number"=>"1", "destination_balance"=>26699, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>7, "source_account_number"=>"2", "source_balance"=>29232, "destination_account_number"=>"1", "destination_balance"=>26706}}
+
+Accounts total check: true
+Transfer amount: 7
+Source balance check: true (before: 29239, after: 29232)
+Destination balance check: true (before: 26699, after: 26706)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29239, "destination_account_number"=>"1", "destination_balance"=>26699, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29239, "destination_account_number"=>"1", "destination_balance"=>26699, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>7, "source_account_number"=>"2", "source_balance"=>29225, "destination_account_number"=>"1", "destination_balance"=>26713}}
+
+Accounts total check: true
+Transfer amount: 7
+Source balance check: true (before: 29232, after: 29225)
+Destination balance check: true (before: 26706, after: 26713)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29232, "destination_account_number"=>"1", "destination_balance"=>26706, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29232, "destination_account_number"=>"1", "destination_balance"=>26706, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29232, "destination_account_number"=>"1", "destination_balance"=>26706, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29232, "destination_account_number"=>"1", "destination_balance"=>26706, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>1, "source_account_number"=>"2", "source_balance"=>29224, "destination_account_number"=>"1", "destination_balance"=>26714}}
+
+Accounts total check: true
+Transfer amount: 1
+Source balance check: true (before: 29225, after: 29224)
+Destination balance check: true (before: 26713, after: 26714)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29225, "destination_account_number"=>"1", "destination_balance"=>26713, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29225, "destination_account_number"=>"1", "destination_balance"=>26713, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29225, "destination_account_number"=>"1", "destination_balance"=>26713, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29225, "destination_account_number"=>"1", "destination_balance"=>26713, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>4, "source_account_number"=>"2", "source_balance"=>29220, "destination_account_number"=>"1", "destination_balance"=>26718}}
+
+Accounts total check: true
+Transfer amount: 4
+Source balance check: true (before: 29224, after: 29220)
+Destination balance check: true (before: 26714, after: 26718)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29224, "destination_account_number"=>"1", "destination_balance"=>26714, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29224, "destination_account_number"=>"1", "destination_balance"=>26714, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29224, "destination_account_number"=>"1", "destination_balance"=>26714, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29224, "destination_account_number"=>"1", "destination_balance"=>26714, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29220, "destination_account_number"=>"1", "destination_balance"=>26718, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>2, "source_account_number"=>"2", "source_balance"=>29218, "destination_account_number"=>"1", "destination_balance"=>26720}}
+
+Accounts total check: true
+Transfer amount: 2
+Source balance check: true (before: 29220, after: 29218)
+Destination balance check: true (before: 26718, after: 26720)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29220, "destination_account_number"=>"1", "destination_balance"=>26718, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29220, "destination_account_number"=>"1", "destination_balance"=>26718, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29220, "destination_account_number"=>"1", "destination_balance"=>26718, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>2, "source_account_number"=>"2", "source_balance"=>29216, "destination_account_number"=>"1", "destination_balance"=>26722}}
+
+Accounts total check: true
+Transfer amount: 2
+Source balance check: true (before: 29218, after: 29216)
+Destination balance check: true (before: 26720, after: 26722)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29218, "destination_account_number"=>"1", "destination_balance"=>26720, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29218, "destination_account_number"=>"1", "destination_balance"=>26720, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29218, "destination_account_number"=>"1", "destination_balance"=>26720, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>7, "source_account_number"=>"2", "source_balance"=>29209, "destination_account_number"=>"1", "destination_balance"=>26729}}
+
+Accounts total check: true
+Transfer amount: 7
+Source balance check: true (before: 29216, after: 29209)
+Destination balance check: true (before: 26722, after: 26729)
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>10, "source_account_number"=>"2", "source_balance"=>29199, "destination_account_number"=>"1", "destination_balance"=>26739}}
+
+Accounts total check: true
+Transfer amount: 10
+Source balance check: true (before: 29209, after: 29199)
+Destination balance check: true (before: 26729, after: 26739)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29209, "destination_account_number"=>"1", "destination_balance"=>26729, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29209, "destination_account_number"=>"1", "destination_balance"=>26729, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29209, "destination_account_number"=>"1", "destination_balance"=>26729, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>6, "source_account_number"=>"2", "source_balance"=>29193, "destination_account_number"=>"1", "destination_balance"=>26745}}
+
+Accounts total check: true
+Transfer amount: 6
+Source balance check: true (before: 29199, after: 29193)
+Destination balance check: true (before: 26739, after: 26745)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29199, "destination_account_number"=>"1", "destination_balance"=>26739, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29199, "destination_account_number"=>"1", "destination_balance"=>26739, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29199, "destination_account_number"=>"1", "destination_balance"=>26739, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>5, "source_account_number"=>"2", "source_balance"=>29188, "destination_account_number"=>"1", "destination_balance"=>26750}}
+
+Accounts total check: true
+Transfer amount: 5
+Source balance check: true (before: 29193, after: 29188)
+Destination balance check: true (before: 26745, after: 26750)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29193, "destination_account_number"=>"1", "destination_balance"=>26745, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29193, "destination_account_number"=>"1", "destination_balance"=>26745, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>10, "source_account_number"=>"2", "source_balance"=>29178, "destination_account_number"=>"1", "destination_balance"=>26760}}
+
+Accounts total check: true
+Transfer amount: 10
+Source balance check: true (before: 29188, after: 29178)
+Destination balance check: true (before: 26750, after: 26760)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29188, "destination_account_number"=>"1", "destination_balance"=>26750, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29188, "destination_account_number"=>"1", "destination_balance"=>26750, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29188, "destination_account_number"=>"1", "destination_balance"=>26750, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29188, "destination_account_number"=>"1", "destination_balance"=>26760, "amount"=>0}}
+
+Accounts total check: false
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>5, "source_account_number"=>"2", "source_balance"=>29173, "destination_account_number"=>"1", "destination_balance"=>26765}}
+
+Accounts total check: true
+Transfer amount: 5
+Source balance check: true (before: 29178, after: 29173)
+Destination balance check: true (before: 26760, after: 26765)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29178, "destination_account_number"=>"1", "destination_balance"=>26760, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29178, "destination_account_number"=>"1", "destination_balance"=>26760, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29178, "destination_account_number"=>"1", "destination_balance"=>26760, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29178, "destination_account_number"=>"1", "destination_balance"=>26760, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>10, "source_account_number"=>"2", "source_balance"=>29163, "destination_account_number"=>"1", "destination_balance"=>26775}}
+
+Accounts total check: true
+Transfer amount: 10
+Source balance check: true (before: 29173, after: 29163)
+Destination balance check: true (before: 26765, after: 26775)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29173, "destination_account_number"=>"1", "destination_balance"=>26765, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29173, "destination_account_number"=>"1", "destination_balance"=>26765, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29173, "destination_account_number"=>"1", "destination_balance"=>26765, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>9, "source_account_number"=>"2", "source_balance"=>29154, "destination_account_number"=>"1", "destination_balance"=>26784}}
+
+Accounts total check: true
+Transfer amount: 9
+Source balance check: true (before: 29163, after: 29154)
+Destination balance check: true (before: 26775, after: 26784)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29163, "destination_account_number"=>"1", "destination_balance"=>26775, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29163, "destination_account_number"=>"1", "destination_balance"=>26784, "amount"=>0}}
+
+Accounts total check: false
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>5, "source_account_number"=>"2", "source_balance"=>29149, "destination_account_number"=>"1", "destination_balance"=>26789}}
+
+Accounts total check: true
+Transfer amount: 5
+Source balance check: true (before: 29154, after: 29149)
+Destination balance check: true (before: 26784, after: 26789)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29154, "destination_account_number"=>"1", "destination_balance"=>26784, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29154, "destination_account_number"=>"1", "destination_balance"=>26789, "amount"=>0}}
+
+Accounts total check: false
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>5, "source_account_number"=>"2", "source_balance"=>29144, "destination_account_number"=>"1", "destination_balance"=>26794}}
+
+Accounts total check: true
+Transfer amount: 5
+Source balance check: true (before: 29149, after: 29144)
+Destination balance check: true (before: 26789, after: 26794)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29149, "destination_account_number"=>"1", "destination_balance"=>26789, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29149, "destination_account_number"=>"1", "destination_balance"=>26789, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29149, "destination_account_number"=>"1", "destination_balance"=>26789, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>6, "source_account_number"=>"2", "source_balance"=>29138, "destination_account_number"=>"1", "destination_balance"=>26800}}
+
+Accounts total check: true
+Transfer amount: 6
+Source balance check: true (before: 29144, after: 29138)
+Destination balance check: true (before: 26794, after: 26800)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29144, "destination_account_number"=>"1", "destination_balance"=>26794, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>9, "source_account_number"=>"2", "source_balance"=>29129, "destination_account_number"=>"1", "destination_balance"=>26809}}
+
+Accounts total check: true
+Transfer amount: 9
+Source balance check: true (before: 29138, after: 29129)
+Destination balance check: true (before: 26800, after: 26809)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29138, "destination_account_number"=>"1", "destination_balance"=>26800, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29138, "destination_account_number"=>"1", "destination_balance"=>26800, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29138, "destination_account_number"=>"1", "destination_balance"=>26800, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29138, "destination_account_number"=>"1", "destination_balance"=>26800, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>1, "source_account_number"=>"2", "source_balance"=>29128, "destination_account_number"=>"1", "destination_balance"=>26810}}
+
+Accounts total check: true
+Transfer amount: 1
+Source balance check: true (before: 29129, after: 29128)
+Destination balance check: true (before: 26809, after: 26810)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29129, "destination_account_number"=>"1", "destination_balance"=>26809, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29129, "destination_account_number"=>"1", "destination_balance"=>26809, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29129, "destination_account_number"=>"1", "destination_balance"=>26809, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29129, "destination_account_number"=>"1", "destination_balance"=>26809, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>6, "source_account_number"=>"2", "source_balance"=>29122, "destination_account_number"=>"1", "destination_balance"=>26816}}
+
+Accounts total check: true
+Transfer amount: 6
+Source balance check: true (before: 29128, after: 29122)
+Destination balance check: true (before: 26810, after: 26816)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29128, "destination_account_number"=>"1", "destination_balance"=>26810, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29128, "destination_account_number"=>"1", "destination_balance"=>26810, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29128, "destination_account_number"=>"1", "destination_balance"=>26810, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29128, "destination_account_number"=>"1", "destination_balance"=>26810, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>7, "source_account_number"=>"2", "source_balance"=>29115, "destination_account_number"=>"1", "destination_balance"=>26823}}
+
+Accounts total check: true
+Transfer amount: 7
+Source balance check: true (before: 29122, after: 29115)
+Destination balance check: true (before: 26816, after: 26823)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29122, "destination_account_number"=>"1", "destination_balance"=>26816, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29122, "destination_account_number"=>"1", "destination_balance"=>26816, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29122, "destination_account_number"=>"1", "destination_balance"=>26816, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29122, "destination_account_number"=>"1", "destination_balance"=>26816, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29115, "destination_account_number"=>"1", "destination_balance"=>26823, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29115, "destination_account_number"=>"1", "destination_balance"=>26823, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>8, "source_account_number"=>"2", "source_balance"=>29107, "destination_account_number"=>"1", "destination_balance"=>26831}}
+
+Accounts total check: true
+Transfer amount: 8
+Source balance check: true (before: 29115, after: 29107)
+Destination balance check: true (before: 26823, after: 26831)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29115, "destination_account_number"=>"1", "destination_balance"=>26823, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29115, "destination_account_number"=>"1", "destination_balance"=>26823, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>2, "source_account_number"=>"2", "source_balance"=>29105, "destination_account_number"=>"1", "destination_balance"=>26833}}
+
+Accounts total check: true
+Transfer amount: 2
+Source balance check: true (before: 29107, after: 29105)
+Destination balance check: true (before: 26831, after: 26833)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29107, "destination_account_number"=>"1", "destination_balance"=>26831, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29107, "destination_account_number"=>"1", "destination_balance"=>26831, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29107, "destination_account_number"=>"1", "destination_balance"=>26831, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29107, "destination_account_number"=>"1", "destination_balance"=>26831, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>10, "source_account_number"=>"2", "source_balance"=>29095, "destination_account_number"=>"1", "destination_balance"=>26843}}
+
+Accounts total check: true
+Transfer amount: 10
+Source balance check: true (before: 29105, after: 29095)
+Destination balance check: true (before: 26833, after: 26843)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29105, "destination_account_number"=>"1", "destination_balance"=>26833, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29105, "destination_account_number"=>"1", "destination_balance"=>26833, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29105, "destination_account_number"=>"1", "destination_balance"=>26833, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29105, "destination_account_number"=>"1", "destination_balance"=>26833, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29095, "destination_account_number"=>"1", "destination_balance"=>26843, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29095, "destination_account_number"=>"1", "destination_balance"=>26843, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29095, "destination_account_number"=>"1", "destination_balance"=>26843, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29095, "destination_account_number"=>"1", "destination_balance"=>26843, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>3, "source_account_number"=>"2", "source_balance"=>29092, "destination_account_number"=>"1", "destination_balance"=>26846}}
+
+Accounts total check: true
+Transfer amount: 3
+Source balance check: true (before: 29095, after: 29092)
+Destination balance check: true (before: 26843, after: 26846)
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>4, "source_account_number"=>"2", "source_balance"=>29088, "destination_account_number"=>"1", "destination_balance"=>26850}}
+
+Accounts total check: true
+Transfer amount: 4
+Source balance check: true (before: 29092, after: 29088)
+Destination balance check: true (before: 26846, after: 26850)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29092, "destination_account_number"=>"1", "destination_balance"=>26846, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29092, "destination_account_number"=>"1", "destination_balance"=>26846, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29092, "destination_account_number"=>"1", "destination_balance"=>26846, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29092, "destination_account_number"=>"1", "destination_balance"=>26850, "amount"=>0}}
+
+Accounts total check: false
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29088, "destination_account_number"=>"1", "destination_balance"=>26850, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29088, "destination_account_number"=>"1", "destination_balance"=>26850, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29088, "destination_account_number"=>"1", "destination_balance"=>26850, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>2, "source_account_number"=>"2", "source_balance"=>29086, "destination_account_number"=>"1", "destination_balance"=>26852}}
+
+Accounts total check: true
+Transfer amount: 2
+Source balance check: true (before: 29088, after: 29086)
+Destination balance check: true (before: 26850, after: 26852)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29088, "destination_account_number"=>"1", "destination_balance"=>26850, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>7, "source_account_number"=>"2", "source_balance"=>29079, "destination_account_number"=>"1", "destination_balance"=>26859}}
+
+Accounts total check: true
+Transfer amount: 7
+Source balance check: true (before: 29086, after: 29079)
+Destination balance check: true (before: 26852, after: 26859)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29086, "destination_account_number"=>"1", "destination_balance"=>26852, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29086, "destination_account_number"=>"1", "destination_balance"=>26852, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29086, "destination_account_number"=>"1", "destination_balance"=>26852, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29086, "destination_account_number"=>"1", "destination_balance"=>26852, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>3, "source_account_number"=>"2", "source_balance"=>29076, "destination_account_number"=>"1", "destination_balance"=>26862}}
+
+Accounts total check: true
+Transfer amount: 3
+Source balance check: true (before: 29079, after: 29076)
+Destination balance check: true (before: 26859, after: 26862)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29079, "destination_account_number"=>"1", "destination_balance"=>26859, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29079, "destination_account_number"=>"1", "destination_balance"=>26859, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29079, "destination_account_number"=>"1", "destination_balance"=>26859, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>7, "source_account_number"=>"2", "source_balance"=>29069, "destination_account_number"=>"1", "destination_balance"=>26869}}
+
+Accounts total check: true
+Transfer amount: 7
+Source balance check: true (before: 29076, after: 29069)
+Destination balance check: true (before: 26862, after: 26869)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29076, "destination_account_number"=>"1", "destination_balance"=>26862, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29076, "destination_account_number"=>"1", "destination_balance"=>26869, "amount"=>0}}
+
+Accounts total check: false
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29069, "destination_account_number"=>"1", "destination_balance"=>26869, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>3, "source_account_number"=>"2", "source_balance"=>29066, "destination_account_number"=>"1", "destination_balance"=>26872}}
+
+Accounts total check: true
+Transfer amount: 3
+Source balance check: true (before: 29069, after: 29066)
+Destination balance check: true (before: 26869, after: 26872)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29069, "destination_account_number"=>"1", "destination_balance"=>26869, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29069, "destination_account_number"=>"1", "destination_balance"=>26869, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>5, "source_account_number"=>"2", "source_balance"=>29061, "destination_account_number"=>"1", "destination_balance"=>26877}}
+
+Accounts total check: true
+Transfer amount: 5
+Source balance check: true (before: 29066, after: 29061)
+Destination balance check: true (before: 26872, after: 26877)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29066, "destination_account_number"=>"1", "destination_balance"=>26872, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29066, "destination_account_number"=>"1", "destination_balance"=>26872, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29066, "destination_account_number"=>"1", "destination_balance"=>26872, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29066, "destination_account_number"=>"1", "destination_balance"=>26872, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>2, "source_account_number"=>"2", "source_balance"=>29059, "destination_account_number"=>"1", "destination_balance"=>26879}}
+
+Accounts total check: true
+Transfer amount: 2
+Source balance check: true (before: 29061, after: 29059)
+Destination balance check: true (before: 26877, after: 26879)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29061, "destination_account_number"=>"1", "destination_balance"=>26877, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29061, "destination_account_number"=>"1", "destination_balance"=>26877, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29061, "destination_account_number"=>"1", "destination_balance"=>26877, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29061, "destination_account_number"=>"1", "destination_balance"=>26877, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"ok", "transfer"=>{"amount"=>10, "source_account_number"=>"2", "source_balance"=>29049, "destination_account_number"=>"1", "destination_balance"=>26889}}
+
+Accounts total check: true
+Transfer amount: 10
+Source balance check: true (before: 29059, after: 29049)
+Destination balance check: true (before: 26879, after: 26889)
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29059, "destination_account_number"=>"1", "destination_balance"=>26879, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29059, "destination_account_number"=>"1", "destination_balance"=>26879, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29059, "destination_account_number"=>"1", "destination_balance"=>26879, "amount"=>0}}
+
+Accounts total check: true
+---------------------------------------------------------------------------------
+{"status"=>"concurrency", "transfer"=>{"source_account_number"=>"2", "source_balance"=>29059, "destination_account_number"=>"1", "destination_balance"=>26879, "amount"=>0}}
+
+Accounts total check: true

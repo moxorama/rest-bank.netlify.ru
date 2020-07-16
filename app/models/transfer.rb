@@ -34,6 +34,8 @@ class Transfer < ApplicationRecord
   def process_money
     return unless valid?
 
+    [source, destination].sort{ |a,b| a.id <=> b.id }.each { |a| a.lock! }
+
     if self.source.balance <= self.amount
       no_balance!
       return
@@ -44,8 +46,9 @@ class Transfer < ApplicationRecord
     # Если по каким-то причинам баланс аккаунта поменялся - откатываем транзакцию 
     Account.transaction do
       begin
-        source.update_attributes(balance: source.balance - self.amount)
-        destination.update_attributes(balance: destination.balance + self.amount)
+
+        source.withdraw(self.amount)
+        destination.deposit(self.amount)
 
         Transaction.create(account: self.source, amount: -self.amount, reason: self)
         Transaction.create(account: self.destination, amount: self.amount, reason: self)

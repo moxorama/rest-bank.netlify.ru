@@ -4,7 +4,7 @@
 
 namespace :consistency do 
   task :test, [:source, :destination] do |t, args|
-    HOST = 'http://194.87.110.156'
+    HOST = 'http://localhost:3000'
     CONCURRENCY  = 10
     
     source_account_number = args[:source]

@@ -7,6 +7,13 @@ class Account < ApplicationRecord
 
   after_create :initial_transaction
 
+  def withdraw(amount)
+    with_lock { update!(balance: balance - amount) }
+  end
+
+  def deposit(amount)
+    with_lock { update!(balance: balance + amount) }
+  end
 
   def initial_transaction
     Transaction.create(account: self, amount: self.balance)
