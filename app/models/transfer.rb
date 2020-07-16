@@ -34,7 +34,9 @@ class Transfer < ApplicationRecord
   def process_money
     return unless valid?
 
-    [source, destination].sort{ |a,b| a.id <=> b.id }.each { |a| a.lock! }
+    [source, destination]
+      .sort{ |a,b| a.id <=> b.id }
+      .each { |a| a.lock! }
 
     if self.source.balance <= self.amount
       no_balance!

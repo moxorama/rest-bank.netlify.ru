@@ -4,8 +4,9 @@
 
 namespace :consistency do 
   task :test, [:source, :destination] do |t, args|
-    HOST = 'http://localhost:3000'
+    HOST = 'http://194.87.110.156'
     CONCURRENCY  = 10
+    NUM_REQUESTS = 500
     
     source_account_number = args[:source]
     destination_account_number = args[:destination]
@@ -30,7 +31,6 @@ namespace :consistency do
       return
     end
 
-    p source_info, destination_info
     # Подготовка данных для тестирования целостности
     # Сохраняем значения балансов аккаунтов до начала теста, а также сумму балансов
     source_balance = source_info.dig('account', 'balance') 
@@ -39,20 +39,24 @@ namespace :consistency do
   
     hydra = Typhoeus::Hydra.new(max_concurrency: 5)
 
-    requests = 500.times.map do 
-      request =  Typhoeus::Request.new(HOST + '/transfers/',   
-        method: :post,
-        body: {
-          source_account_number: source_account_number,
-          destination_account_number: destination_account_number,
-          amount: rand(1..10)
-        }
-      )
-      hydra.queue(request)
-      request 
-    end
+    requests = []
 
-    hydra.run
+    benchmark = Benchmark.measure ("#{NUM_REQUESTS} requests") {
+      requests = NUM_REQUESTS.times.map do 
+        request = Typhoeus::Request.new(HOST + '/transfers/',   
+          method: :post,
+          body: {
+            source_account_number: source_account_number,
+            destination_account_number: destination_account_number,
+            amount: rand(1..10)
+          }
+        )
+        hydra.queue(request)
+        request 
+      end
+
+      hydra.run
+    }
 
     requests.each do |r| 
       result = JSON.parse(r.response.body)
@@ -84,5 +88,11 @@ namespace :consistency do
         end
       end
     end
+
+    print "---------------------------------------------------------------------\n"
+    print "threads=#{CONCURRENCY}, #{NUM_REQUESTS} requests in #{"%.1f" % benchmark.real} seconds, #{"%.2f" % (NUM_REQUESTS/benchmark.real)} rps\n"
+
+
+
   end
 end
