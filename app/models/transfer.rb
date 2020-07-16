@@ -52,13 +52,13 @@ class Transfer < ApplicationRecord
         source.withdraw(self.amount)
         destination.deposit(self.amount)
 
-        Transaction.create(account: self.source, amount: -self.amount, reason: self)
-        Transaction.create(account: self.destination, amount: self.amount, reason: self)
+        #Transaction.create(account: self.source, amount: -self.amount, reason: self)
+        #Transaction.create(account: self.destination, amount: self.amount, reason: self)
 
-        self.update_attributes(
-          final_source_balance: source.balance,
-          final_destination_balance: destination.balance
-        )
+        #self.update_attributes(
+        #  final_source_balance: source.balance,
+        #  final_destination_balance: destination.balance
+        #)
         complete!
       rescue
         concurrency!
