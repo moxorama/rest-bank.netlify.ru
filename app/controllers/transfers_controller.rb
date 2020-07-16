@@ -1,7 +1,13 @@
 class TransfersController < ApplicationController
   def create
-    @source = Account.find_by(account_number: params[:source_account_number])
-    @destination = Account.find_by(account_number: params[:destination_account_number])
+    source_account_number = params[:source_account_number]
+    destination_account_number =  params[:destination_account_number]
+
+    # Запрашиваем аккаунты в один запрос к БД для атомарности, выбираем средствами ruby
+    accounts = Account.where(account_number: [source_account_number, destination_account_number])
+    @source = accounts.find { |a| a.account_number == source_account_number }
+    @destination = accounts.find{ |a| a.account_number == destination_account_number }
+    
     @amount = params[:amount] || 0
 
     @transfer = Transfer.create(

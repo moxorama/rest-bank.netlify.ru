@@ -10,6 +10,11 @@ namespace :consistency do
     source_account_number = args[:source]
     destination_account_number = args[:destination]
 
+    if source_account_number.blank? || destination_account_number.blank? 
+      abort("Usage:\nbundle exec rake 'consistency:test[<source_account>,<destination_account>]'\n")
+      return
+    end
+
     response = Typhoeus.get("#{HOST}/accounts/#{source_account_number}")
     source_info = JSON.parse(response.body)
 
@@ -17,16 +22,15 @@ namespace :consistency do
     destination_info = JSON.parse(response.body)
 
     if (source_info.dig('status') != 'ok') 
-      p "Wrong source account #{source_account_number}"
-      return
+      abort("Wrong source account #{source_account_number}")
     end
 
     if (destination_info.dig('status') != 'ok') 
-      p "Wrong destination account #{destination_account_number}"
+      abort("Wrong destination account #{destination_account_number}")
       return
     end
 
-
+    p source_info, destination_info
     # Подготовка данных для тестирования целостности
     # Сохраняем значения балансов аккаунтов до начала теста, а также сумму балансов
     source_balance = source_info.dig('account', 'balance') 
@@ -35,7 +39,7 @@ namespace :consistency do
   
     hydra = Typhoeus::Hydra.new(max_concurrency: 5)
 
-    requests = 200.times.map do 
+    requests = 100.times.map do 
       request =  Typhoeus::Request.new(HOST + '/transfers/',   
         method: :post,
         body: {
