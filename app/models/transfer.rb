@@ -45,7 +45,7 @@ class Transfer < ApplicationRecord
     transaction do
       begin  
         source.lock!
-        destination.lock
+        destination.lock!
 
         source.withdraw(self.amount)
         destination.deposit(self.amount)
