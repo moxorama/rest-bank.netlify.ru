@@ -5,8 +5,8 @@
 namespace :consistency do 
   task :test, [:source, :destination] do |t, args|
     HOST = 'http://194.87.110.156'
-    CONCURRENCY  = 5
-    NUM_REQUESTS = 1000
+    CONCURRENCY  = 20
+    NUM_REQUESTS = 2000
     
     source_account_number = args[:source]
     destination_account_number = args[:destination]
