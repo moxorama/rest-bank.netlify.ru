@@ -15,7 +15,7 @@ set :use_sudo, false
 set :deploy_to,   "/var/www/rest-bank.netlify.ru"
 set :passenger_restart_with_touch, true
 set :rvm_custom_path, "/usr/local/rvm"
-set :rvm_ruby_version, '2.5'
+set :rvm_ruby_version, '2.7'
 
 
 
