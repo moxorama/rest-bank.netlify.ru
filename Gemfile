@@ -59,9 +59,13 @@ group :development do
   gem 'capistrano-linked-files'
   gem 'capistrano-db-tasks', require: false
   gem 'capistrano-rvm'
+  gem "ruby-prof"
+
 end
 
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem "rack-mini-profiler", "~> 2.0"

@@ -21,6 +21,7 @@ describe "Transfer API:" do
     expect(response).to have_http_status 200
 
     json = JSON.parse(response.body)
+
     
     expect(json['transfer']['source_account_number']).to eq 'demo_source'
     expect(json['transfer']['source_balance']).to eq (INITIAL_AMOUNT - TRANSFER_AMOUNT)
@@ -89,7 +90,7 @@ describe "Transfer API:" do
 
     json = JSON.parse(response.body)
 
-    expect(json['status']).to eq 'amount'
+    expect(json['status']).to eq 'negative_amount'
     expect(json['transfer']['source_account_number']).to eq 'demo_source'
     expect(json['transfer']['source_balance']).to eq (INITIAL_AMOUNT - TRANSFER_AMOUNT)
     expect(json['transfer']['destination_account_number']).to eq 'demo_destination'

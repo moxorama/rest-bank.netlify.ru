@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_16_193816) do
+ActiveRecord::Schema.define(version: 2020_07_16_224021) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "account_number"
@@ -45,7 +45,11 @@ ActiveRecord::Schema.define(version: 2020_07_16_193816) do
     t.integer "initial_destination_balance"
     t.integer "final_source_balance"
     t.integer "final_destination_balance"
+    t.string "source_account_number"
+    t.string "destination_account_number"
+    t.index ["destination_account_number"], name: "index_transfers_on_destination_account_number"
     t.index ["destination_id"], name: "index_transfers_on_destination_id"
+    t.index ["source_account_number"], name: "index_transfers_on_source_account_number"
     t.index ["source_id"], name: "index_transfers_on_source_id"
     t.index ["state"], name: "index_transfers_on_state"
   end

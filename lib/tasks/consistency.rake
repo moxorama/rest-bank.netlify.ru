@@ -6,7 +6,7 @@ namespace :consistency do
   task :test, [:source, :destination] do |t, args|
     HOST = 'http://localhost:3000'
     CONCURRENCY  = 10
-    NUM_REQUESTS = 500
+    NUM_REQUESTS = 50
     
     source_account_number = args[:source]
     destination_account_number = args[:destination]
@@ -22,22 +22,22 @@ namespace :consistency do
     response = Typhoeus.get("#{HOST}/accounts/#{destination_account_number}")
     destination_info = JSON.parse(response.body)
 
-    #if (source_info.dig('status') != 'ok') 
-    #  abort("Wrong source account #{source_account_number}")
-    #end
+    if (source_info.dig('status') != 'ok') 
+      abort("Wrong source account #{source_account_number}")
+    end
 
-    #if (destination_info.dig('status') != 'ok') 
-    #  abort("Wrong destination account #{destination_account_number}")
-    #  return
-    #end
+    if (destination_info.dig('status') != 'ok') 
+      abort("Wrong destination account #{destination_account_number}")
+      return
+    end
 
     # Подготовка данных для тестирования целостности
     # Сохраняем значения балансов аккаунтов до начала теста, а также сумму балансов
-    source_balance = source_info.dig('account', 'balance').to_i
-    destination_balance = destination_info.dig('account','balance').to_i
+    source_balance = source_info.dig('account', 'balance') 
+    destination_balance = destination_info.dig('account','balance')
     total_balance = source_balance + destination_balance
   
-    hydra = Typhoeus::Hydra.new(max_concurrency: 1)
+    hydra = Typhoeus::Hydra.new(max_concurrency: 10)
 
     requests = []
 

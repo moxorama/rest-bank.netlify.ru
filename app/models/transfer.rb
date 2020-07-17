@@ -1,61 +1,91 @@
 class Transfer < ApplicationRecord
-  belongs_to :source, class_name: 'Account', foreign_key: "source_id"
-  belongs_to :destination, class_name: 'Account', foreign_key: "destination_id"
+  belongs_to :source, class_name: 'Account', foreign_key: "source_id", optional: true
+  belongs_to :destination, class_name: 'Account', foreign_key: "destination_id", optional: true
 
-  validates :source, presence: true
-  validates :destination, presence: true
-  validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
-
-  has_many :transactions, as: :reason
   include AASM
 
   aasm column: 'state' do
     state :request, initial: true
+    state :correct
     state :done
-    state :concurrency
+    state :negative_amount
     state :no_balance
+    state :source
+    state :destination
+
+    event :approve! do
+      transitions to: :correct
+    end
 
     event :complete do
       transitions to: :done
     end
 
-    event :concurrency do
-      transitions to: :concurrency
+    event :negative_amount! do
+      transitions to: :negative_amount
     end
 
     event :no_balance do
       transitions to: :no_balance
     end
+
+    event :no_source do 
+      transitions to: :source
+    end
+
+    event :no_destination do
+      transitions to: :destination
+    end
   end
 
   
-  def process_money
-    return unless valid?
-
-    transaction do
-      begin
-        # Сортируем по ID для избежания deadlock
-      
-        [source, destination]
-          .sort { |a,b| a.id <=> b.id }
-          .each { |a| a.lock! }
-  
-        update_attributes(
-          initial_source_balance: source.balance, 
-          initial_destination_balance: destination.balance
-        )
-
-        if self.source.balance <= self.amount
-          no_balance!
-          return
-        end 
+  def process_money!   
+    return unless correct?
     
+    transaction do
+      begin  
+        Account
+          .where(id: [source.id, destination.id])
+          .order(:id)
+          .lock
+
         source.withdraw(self.amount)
         destination.deposit(self.amount)
         complete!
       rescue
-        concurrency!
+        source.reload
+        destination.reload
+        no_balance!
       end
     end
+  end
+
+
+  def check_transfer!
+    accounts = Account
+      .where(account_number: [source_account_number, destination_account_number])
+      .order(:id)
+    
+    source = accounts.find { |a| (a.account_number == source_account_number) }
+    destination = accounts.find { |a| (a.account_number == destination_account_number) }
+
+    update_attributes(source: source, destination: destination)
+
+    if (source.blank?)
+      no_source!
+      return
+    end
+
+    if (destination.blank?)
+      no_destination!
+      return
+    end
+
+    if (amount < 0)
+      negative_amount!
+      return
+    end
+
+    approve!
   end
 end
