@@ -44,10 +44,8 @@ class Transfer < ApplicationRecord
     
     transaction do
       begin  
-        Account
-          .where(id: [source.id, destination.id])
-          .order(:id)
-          .lock
+        source.lock!
+        destination.lock
 
         source.withdraw(self.amount)
         destination.deposit(self.amount)
