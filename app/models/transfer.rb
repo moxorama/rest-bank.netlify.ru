@@ -2,6 +2,8 @@ class Transfer < ApplicationRecord
   belongs_to :source, class_name: 'Account', foreign_key: "source_id", optional: true
   belongs_to :destination, class_name: 'Account', foreign_key: "destination_id", optional: true
 
+  before_validation :generate_transfer_number
+
   include AASM
 
   aasm column: 'state', requires_new_transaction: false do
@@ -105,6 +107,14 @@ class Transfer < ApplicationRecord
     end
 
     approve!
+  end
+
+private
+
+  def generate_transfer_number
+    if self.transfer_uuid.blank?
+      self.transfer_uuid = SecureRandom.uuid
+    end
   end
 
 end

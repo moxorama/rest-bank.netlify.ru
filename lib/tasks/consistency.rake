@@ -3,46 +3,51 @@
 # bundle exec rake 'consistency:test[<исходный_номер_счета>,<целевой_номер_счета>]'
 
 namespace :consistency do 
-  task :test, [:source, :destination] do |t, args|
+  task :test, [:account_1, :account_2] do |t, args|
     HOST = 'http://194.87.110.156'
-    CONCURRENCY  = 10
-    NUM_REQUESTS = 1
+    CONCURRENCY  = 4
+    NUM_REQUESTS = 10000
     
-    source_account_number = args[:source]
-    destination_account_number = args[:destination]
+    account_1_number = args[:account_1]
+    account_2_number = args[:account_2]
 
-    if source_account_number.blank? || destination_account_number.blank? 
-      abort("Usage:\nbundle exec rake 'consistency:test[<source_account>,<destination_account>]'\n")
+    if account_1_number.blank? || account_2_number.blank? 
+      abort("Usage:\nbundle exec rake 'consistency:test[<account_1>,<account_2>]'\n")
       return
     end
 
-    response = Typhoeus.get("#{HOST}/accounts/#{source_account_number}")
-    source_info = JSON.parse(response.body)
+    response = Typhoeus.get("#{HOST}/accounts/#{account_1_number}")
+    account_1_info = JSON.parse(response.body)
 
-    response = Typhoeus.get("#{HOST}/accounts/#{destination_account_number}")
-    destination_info = JSON.parse(response.body)
+    response = Typhoeus.get("#{HOST}/accounts/#{account_2_number}")
+    account_2_info = JSON.parse(response.body)
 
-    if (source_info.dig('status') != 'ok') 
-      abort("Wrong source account #{source_account_number}")
+    if (account_1_info.dig('status') != 'ok') 
+      abort("Wrong source account #{account_1_number}")
+      return
     end
 
-    if (destination_info.dig('status') != 'ok') 
-      abort("Wrong destination account #{destination_account_number}")
+    if (account_2_info.dig('status') != 'ok') 
+      abort("Wrong destination account #{account_2_number}")
       return
     end
 
     # Подготовка данных для тестирования целостности
     # Сохраняем значения балансов аккаунтов до начала теста, а также сумму балансов
-    source_balance = source_info.dig('account', 'balance') 
-    destination_balance = destination_info.dig('account','balance')
-    total_balance = source_balance + destination_balance
+    total_balance = (
+      account_1_info.dig('account', 'balance').to_i + 
+      account_2_info.dig('account', 'balance').to_i
+    )
   
     hydra = Typhoeus::Hydra.new(max_concurrency: 10)
 
     requests = []
 
     benchmark = Benchmark.measure ("#{NUM_REQUESTS} requests") {
+
       requests = NUM_REQUESTS.times.map do 
+        source_account_number, destination_account_number = [account_1_number, account_2_number].shuffle
+
         request = Typhoeus::Request.new(HOST + '/transfers/',   
           method: :post,
           body: {
@@ -66,26 +71,13 @@ namespace :consistency do
       if (['ok', 'concurrency', 'no_balance'].include?(result['status']))
         transfer = result.dig('transfer')
 
-        amount = transfer['amount']
-        source_balance_after_transfer = transfer['source_balance'] 
-        destination_balance_after_transfer = transfer['destination_balance']
+        source_balance = transfer['source_balance'] 
+        destination_balance = transfer['destination_balance']
         
         # Проверка - сумма балансов на аккаунтах не должна меняться в любом случае
-        accounts_total_status = ((source_balance_after_transfer + destination_balance_after_transfer) == total_balance)
+        accounts_total_status = ((source_balance + destination_balance) == total_balance)
         
         print "Accounts total check: #{accounts_total_status.to_s}\n"
-
-        if (result['status'] == 'ok')
-          # Проверка - балансы аккаунтов должны отличаться от ранее сохраненных ровно на сумму перевода
-          source_balance_status = ((source_balance - amount) == source_balance_after_transfer)
-          destination_balance_status = ((destination_balance + amount) == destination_balance_after_transfer)
-          print "Transfer amount: #{amount}\n"
-          print 'Source balance check: ' +  source_balance_status.to_s + " (before: #{source_balance}, after: #{source_balance_after_transfer})\n"  
-          print 'Destination balance check: ' + destination_balance_status.to_s + " (before: #{destination_balance}, after: #{destination_balance_after_transfer})\n"  
-
-          source_balance = source_balance_after_transfer
-          destination_balance = destination_balance_after_transfer
-        end
       end
     end
 
