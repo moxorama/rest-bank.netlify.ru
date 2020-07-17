@@ -45,9 +45,11 @@ class Transfer < ApplicationRecord
     initial_balance = {}
 
     transaction do
-      begin  
-        source.lock!
-        destination.lock!
+      begin
+        # Блокируем всегда по возрастанию id для ухода от dealock
+        [source, destination]
+          .sort { |a,b| a.id <=> b.id }
+          .each { |a| a.lock! }
 
         # Cохраняем данные для отката
         initial_balance = {
