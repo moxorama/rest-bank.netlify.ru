@@ -13,7 +13,7 @@ class Transfer < ApplicationRecord
     state :source
     state :destination
 
-    event :approve! do
+    event :approve do
       transitions to: :correct
     end
 
@@ -21,7 +21,7 @@ class Transfer < ApplicationRecord
       transitions to: :done
     end
 
-    event :negative_amount! do
+    event :negative_amount do
       transitions to: :negative_amount
     end
 
@@ -55,8 +55,8 @@ class Transfer < ApplicationRecord
           destination: destination&.balance
         }
 
-        source.withdraw(self.amount)
-        destination.deposit(self.amount)
+        source.withdraw(self.amount, { lock: false })
+        destination.deposit(self.amount, { lock: false })
         complete!
       rescue
         no_balance!
