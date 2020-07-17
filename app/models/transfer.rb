@@ -4,7 +4,7 @@ class Transfer < ApplicationRecord
 
   include AASM
 
-  aasm column: 'state' do
+  aasm column: 'state', requires_new_transaction: false do
     state :request, initial: true
     state :correct
     state :done
