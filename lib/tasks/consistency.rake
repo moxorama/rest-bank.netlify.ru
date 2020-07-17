@@ -6,7 +6,7 @@ namespace :consistency do
   task :test, [:account_1, :account_2] do |t, args|
     HOST = 'http://194.87.110.156'
     CONCURRENCY  = 4
-    NUM_REQUESTS = 10000
+    NUM_REQUESTS = 10
     
     account_1_number = args[:account_1]
     account_2_number = args[:account_2]
@@ -34,10 +34,10 @@ namespace :consistency do
 
     # Подготовка данных для тестирования целостности
     # Сохраняем значения балансов аккаунтов до начала теста, а также сумму балансов
-    total_balance = (
-      account_1_info.dig('account', 'balance').to_i + 
-      account_2_info.dig('account', 'balance').to_i
-    )
+    account_1_balance_verification = account_1_info.dig('account', 'balance').to_i
+    account_2_balance_verification = account_2_info.dig('account', 'balance').to_i
+
+    total_balance = account_1_balance_verification + account_2_balance_verification
   
     hydra = Typhoeus::Hydra.new(max_concurrency: 10)
 
@@ -46,7 +46,8 @@ namespace :consistency do
     benchmark = Benchmark.measure ("#{NUM_REQUESTS} requests") {
 
       requests = NUM_REQUESTS.times.map do 
-        source_account_number, destination_account_number = [account_1_number, account_2_number].shuffle
+        # Вариант также с случайными переводами
+        source_account_number, destination_account_number = [account_1_number, account_2_number] #.shuffle
 
         request = Typhoeus::Request.new(HOST + '/transfers/',   
           method: :post,
@@ -78,11 +79,32 @@ namespace :consistency do
         accounts_total_status = ((source_balance + destination_balance) == total_balance)
         
         print "Accounts total check: #{accounts_total_status.to_s}\n"
+
+        # Проверка только для односторонних переводов
+        if (result['status']=='ok')
+          amount = transfer['amount'].to_i
+          account_1_balance_verification -= amount
+          account_2_balance_verification += amount
+        end
       end
     end
 
+
+    response = Typhoeus.get("#{HOST}/accounts/#{account_1_number}")
+    account_1_info = JSON.parse(response.body)
+
+    account_1_status = (account_1_info.dig('account', 'balance') == account_1_balance_verification).to_s
+
+
+    response = Typhoeus.get("#{HOST}/accounts/#{account_2_number}")
+    account_2_info = JSON.parse(response.body)
+    account_2_status = (account_2_info.dig('account', 'balance') == account_2_balance_verification).to_s
+
+
     print "---------------------------------------------------------------------\n"
     print "threads=#{CONCURRENCY}, #{NUM_REQUESTS} requests in #{"%.1f" % benchmark.real} seconds, #{"%.2f" % (NUM_REQUESTS/benchmark.real)} rps\n"
+    print "account #{account_1_number} balance validation: #{account_1_status}\n"
+    print "account #{account_2_number} balance validation: #{account_2_status}\n"
 
 
 
