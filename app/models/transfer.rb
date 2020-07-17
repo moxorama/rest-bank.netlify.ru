@@ -76,6 +76,7 @@ class Transfer < ApplicationRecord
 
 
   def check_transfer!
+    # Читаем в один запрос для консистентности
     accounts = Account
       .where(account_number: [source_account_number, destination_account_number])
       .order(:id)
@@ -83,7 +84,7 @@ class Transfer < ApplicationRecord
     source = accounts.find { |a| (a.account_number == source_account_number) }
     destination = accounts.find { |a| (a.account_number == destination_account_number) }
 
-    # Сохраняем значения балансов на случай если откатываем по причине неконсистентсности
+    # Сохраняем значения балансов на случай если откатываем по причине неконсистентсности исходных данных
     update_attributes(
       source: source, 
       initial_source_balance: source&.balance.to_i,

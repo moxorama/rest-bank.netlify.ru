@@ -8,7 +8,6 @@ class AccountsController < ApplicationController
     @account_number = params[:account_number]
     @balance = params[:balance]
 
-
     @account = Account.create(account_number: @account_number, balance: @balance)
 
     if !@account.valid?

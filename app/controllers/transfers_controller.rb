@@ -2,7 +2,7 @@ class TransfersController < ApplicationController
   def create
     source_account_number = params[:source_account_number]
     destination_account_number = params[:destination_account_number]
-    @amount = params[:amount] || 0
+    @amount = params[:amount].to_i || 0
 
     @transfer = Transfer.create(
       source_account_number: source_account_number,
