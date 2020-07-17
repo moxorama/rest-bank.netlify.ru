@@ -41,13 +41,19 @@ class Transfer < ApplicationRecord
   
   def process_money!   
     return unless correct?
-    
+
+    initial_balance = {}
+
     transaction do
       begin  
         source.lock!
         destination.lock!
 
-        save_initial_balance
+        # Cохраняем данные для отката
+        initial_balance = {
+          source: source&.balance,
+          destination: destination&.balance
+        }
 
         source.withdraw(self.amount)
         destination.deposit(self.amount)
@@ -56,6 +62,12 @@ class Transfer < ApplicationRecord
         no_balance!
       end
     end
+
+    # Этот update делаем вне транзакции и lock, для уменьшения критической секции
+    update_attributes(
+      initial_source_balance: initial_balance[:source],
+      initial_destination_balance: initial_balance[:destination]
+    )
   end
 
 
@@ -93,7 +105,4 @@ class Transfer < ApplicationRecord
     approve!
   end
 
-  def save_initial_balance
-    update_attributes(initial_source_balance: source.balance, initial_destination_balance: destination.balance)
-  end
 end
