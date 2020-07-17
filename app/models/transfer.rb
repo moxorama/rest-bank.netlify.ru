@@ -47,12 +47,12 @@ class Transfer < ApplicationRecord
         source.lock!
         destination.lock!
 
+        save_initial_balance
+
         source.withdraw(self.amount)
         destination.deposit(self.amount)
         complete!
       rescue
-        source.reload
-        destination.reload
         no_balance!
       end
     end
@@ -67,7 +67,13 @@ class Transfer < ApplicationRecord
     source = accounts.find { |a| (a.account_number == source_account_number) }
     destination = accounts.find { |a| (a.account_number == destination_account_number) }
 
-    update_attributes(source: source, destination: destination)
+    # Сохраняем значения балансов на случай если откатываем по причине неконсистентсности
+    update_attributes(
+      source: source, 
+      initial_source_balance: source&.balance.to_i,
+      destination: destination,
+      initial_destination_balance: destination&.balance.to_i
+    )
 
     if (source.blank?)
       no_source!
@@ -85,5 +91,9 @@ class Transfer < ApplicationRecord
     end
 
     approve!
+  end
+
+  def save_initial_balance
+    update_attributes(initial_source_balance: source.balance, initial_destination_balance: destination.balance)
   end
 end
