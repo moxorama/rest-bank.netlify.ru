@@ -227,7 +227,7 @@ DEPENDENCIES
   mysql2 (>= 0.4.4, < 0.6.0)
   puma (~> 3.11)
   rack-cors
-  rack-mini-profiler (~> 2.0)
+  rack-mini-profiler
   rails (~> 5.2.1)
   rspec-core
   rspec-rails
